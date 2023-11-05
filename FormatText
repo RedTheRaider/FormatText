@@ -1,0 +1,49 @@
+Sub FormatText()
+    ' Formatting the Gross Income Text
+    With ActiveDocument.Content.Find
+        .ClearFormatting
+        .Text = "Gross income or salaryb:([0-9]{1,})"
+        .Replacement.Text = "Gross income: $\1"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = True
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+        .Execute Replace:=wdReplaceAll
+    End With
+    
+    ' Formatting the ABN Text
+    With ActiveDocument.Content.Find
+        .ClearFormatting
+        .Text = "The Payers Australian Business Number or Payeer Number:([0-9]{1,})"
+        .Replacement.Text = "The Payers ABN Number or Payeer Number: \1"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = True
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+        .Execute Replace:=wdReplaceAll
+    End With
+    
+    ' Formatting the Private Health Insurance ID
+    With ActiveDocument.Content.Find
+        .ClearFormatting
+        .Text = "Private health insurance idb:b([a-zA-Z0-9]{1,})"
+        .Replacement.Text = "PHI ID:\1"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = True
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+        .Execute Replace:=wdReplaceAll
+    End With
+End Sub
