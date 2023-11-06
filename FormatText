@@ -2,8 +2,24 @@ Sub FormatText()
     ' Formatting the Gross Income Text
     With ActiveDocument.Content.Find
         .ClearFormatting
-        .Text = "Gross income or salaryb:([0-9]{1,})"
+        .Text = "Gross paymentC-G([0-9]{1,})"
         .Replacement.Text = "Gross income: $\1"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = True
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+        .Execute Replace:=wdReplaceAll
+    End With
+
+    ' Formatting the Tax withheld Text
+    With ActiveDocument.Content.Find
+        .ClearFormatting
+        .Text = "Tax withheld from salary and wages([0-9]{1,})"
+        .Replacement.Text = "Tax withheld from salary & wages: $\1"
         .Forward = True
         .Wrap = wdFindContinue
         .Format = False
@@ -18,7 +34,7 @@ Sub FormatText()
     ' Formatting the ABN Text
     With ActiveDocument.Content.Find
         .ClearFormatting
-        .Text = "The Payers Australian Business Number or Payeer Number:([0-9]{1,})"
+        .Text = "Payer's Australian business number or withholding payer number([0-9]{1,})"
         .Replacement.Text = "The Payers ABN Number or Payeer Number: \1"
         .Forward = True
         .Wrap = wdFindContinue
@@ -34,8 +50,24 @@ Sub FormatText()
     ' Formatting the Private Health Insurance ID
     With ActiveDocument.Content.Find
         .ClearFormatting
-        .Text = "Private health insurance idb:b([a-zA-Z0-9]{1,})"
-        .Replacement.Text = "PHI ID:\1"
+        .Text = "Private health insurance Health fund IDB([a-zA-Z0-9]{1,})"
+        .Replacement.Text = "PHI ID: \1"
+        .Forward = True
+        .Wrap = wdFindContinue
+        .Format = False
+        .MatchCase = False
+        .MatchWholeWord = False
+        .MatchWildcards = True
+        .MatchSoundsLike = False
+        .MatchAllWordForms = False
+        .Execute Replace:=wdReplaceAll
+    End With
+    
+    ' Formatting Membership Number
+    With ActiveDocument.Content.Find
+        .ClearFormatting
+        .Text = "Membership numberC([0-9]{1,})"
+        .Replacement.Text = "Membership Number: \1"
         .Forward = True
         .Wrap = wdFindContinue
         .Format = False
